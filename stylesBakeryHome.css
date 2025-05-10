@@ -386,7 +386,25 @@ body {
     
     .gallery-item {
         min-width: 240px;
-        height: 320px;
+        height: auto; /* Change to auto height on mobile */
+        max-height: none; /* Remove max height restriction */
+        border-radius: 20px; /* Smaller border radius for mobile */
+    }
+    
+    .gallery-item img {
+        object-fit: contain; /* Change to contain to show the full image */
+        max-height: 70vh; /* Limit max height on mobile */
+    }
+    
+    /* Set the gallery to scroll horizontally instead of truncating images */
+    .gallery-container {
+        overflow-x: auto; /* Allow horizontal scrolling on mobile */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        padding-bottom: 15px; /* Add padding for scrollbar */
+    }
+    
+    .gallery {
+        padding: 10px 0; /* Add padding to the gallery */
     }
     
     .footer-content {
