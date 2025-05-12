@@ -1,33 +1,78 @@
-// References to DOM Elements
+// Enhanced JavaScript for better mobile experience
 const prevBtn = document.querySelector("#prev-btn");
 const nextBtn = document.querySelector("#next-btn");
 const book = document.querySelector("#book");
+const hamburger = document.querySelector(".hamburger");
+const navItems = document.querySelector(".nav-items");
 
 const paper1 = document.querySelector("#p1");
 const paper2 = document.querySelector("#p2");
 const paper3 = document.querySelector("#p3");
 
-// Event Listener
+// Event Listeners
 prevBtn.addEventListener("click", goPrevPage);
 nextBtn.addEventListener("click", goNextPage);
+
+// Add hamburger menu functionality
+if (hamburger) {
+    hamburger.addEventListener("click", function() {
+        navItems.classList.toggle("active");
+    });
+}
+
+// Close mobile menu when clicking a nav item
+const navLinks = document.querySelectorAll('.nav-item');
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navItems.classList.remove('active');
+    });
+});
 
 // Business Logic
 let currentLocation = 1;
 let numOfPapers = 3;
 let maxLocation = numOfPapers + 1;
+let isMobile = window.innerWidth <= 768;
 
-// Adjustments for new book size
+// Check for screen size changes
+window.addEventListener('resize', function() {
+    isMobile = window.innerWidth <= 768;
+    updateBookTransform();
+});
+
+// Update book transform based on screen size
+function updateBookTransform() {
+    if (currentLocation === 1) {
+        closeBook(true);
+    } else if (currentLocation === maxLocation) {
+        closeBook(false);
+    } else {
+        openBook();
+    }
+}
+
+// Adjustments for book size based on screen width
 function openBook() {
-    book.style.transform = "translateX(50%)";
-    prevBtn.style.transform = "translateX(-300px)";
-    nextBtn.style.transform = "translateX(300px)";
+    if (isMobile) {
+        book.style.transform = "translateX(0)";
+        prevBtn.style.transform = "translateX(0)";
+        nextBtn.style.transform = "translateX(0)";
+    } else {
+        book.style.transform = "translateX(50%)";
+        prevBtn.style.transform = "translateX(-300px)";
+        nextBtn.style.transform = "translateX(300px)";
+    }
 }
 
 function closeBook(isAtBeginning) {
-    if (isAtBeginning) {
-        book.style.transform = "translateX(0%)";
+    if (isMobile) {
+        book.style.transform = "translateX(0)";
     } else {
-        book.style.transform = "translateX(100%)";
+        if (isAtBeginning) {
+            book.style.transform = "translateX(0%)";
+        } else {
+            book.style.transform = "translateX(100%)";
+        }
     }
 
     prevBtn.style.transform = "translateX(0px)";
@@ -82,3 +127,8 @@ function goPrevPage() {
         currentLocation--;
     }
 }
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    updateBookTransform();
+});
