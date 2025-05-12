@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Order - Create Your Dream Dessert</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylescustomO.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navigation">
+        <div class="logo">
+            <img src="bakeryimages/bakerylogo.png" alt="Crave & Crumb Logo">
+        </div>
+        
+        <div class="hamburger" id="hamburger">☰</div>
+        
+        <div class="nav-items" id="nav-items">
+            <a href="index.html" class="nav-item">Home</a>
+            <a href="#" class="nav-item">Menu</a>
+            <a href="customorder.html" class="nav-item">Custom Order</a>
+            <a href="#" class="nav-item">About Us</a>
+        </div>
+    </nav>
+
+    
+
+
+     <div class="form-container">
+        <h1 class="form-title">Create a Cake!</h1>
+        
+        <form id="cake-order-form">
+            <h2 class="section-title">Contact Info</h2>
+            
+            <div class="form-row">
+                <label class="form-label">Your Name</label>
+                <div class="form-input">
+                    <input type="text" name="name" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label class="form-label">Email</label>
+                <div class="form-input">
+                    <input type="email" name="email" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label class="form-label">Phone</label>
+                <div class="form-input">
+                    <input type="tel" name="phone" required>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Cake Details</h2>
+            
+            <div class="form-row">
+                <label class="form-label">Cake Size</label>
+                <div class="form-input">
+                    <select name="size" required>
+                        <option value="" disabled selected>Select a size</option>
+                        <option value="6inch">6 inch</option>
+                        <option value="8inch">8 inch</option>
+                        <option value="10inch">10 inch</option>
+                        <option value="12inch">12 inch</option>
+                        <option value="tiered">Tiered cake</option>
+                        <option value="custom">Custom size</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label class="form-label">Flavour</label>
+                <div class="form-input">
+                    <select name="flavor" required>
+                        <option value="" disabled selected>Select a flavour</option>
+                        <option value="vanilla">Vanilla</option>
+                        <option value="chocolate">Chocolate</option>
+                        <option value="strawberry">Strawberry</option>
+                        <option value="redvelvet">Red Velvet</option>
+                        <option value="lemon">Lemon</option>
+                        <option value="carrot">Carrot</option>
+                        <option value="coconut">Coconut</option>
+                        <option value="custom">Custom flavour</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label class="form-label">Filling</label>
+                <div class="form-input">
+                    <select name="filling" required>
+                        <option value="" disabled selected>Select a filling</option>
+                        <option value="buttercream">Buttercream</option>
+                        <option value="ganache">Chocolate Ganache</option>
+                        <option value="custard">Custard</option>
+                        <option value="jam">Fruit Jam</option>
+                        <option value="cream">Whipped Cream</option>
+                        <option value="caramel">Caramel</option>
+                        <option value="custom">Custom filling</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label class="form-label">Icing</label>
+                <div class="form-input">
+                    <select name="icing" required>
+                        <option value="" disabled selected>Select an icing</option>
+                        <option value="buttercream">Buttercream</option>
+                        <option value="fondant">Fondant</option>
+                        <option value="ganache">Ganache</option>
+                        <option value="nakedcake">Naked Cake</option>
+                        <option value="whipped">Whipped Cream</option>
+                        <option value="royal">Royal Icing</option>
+                        <option value="custom">Custom icing</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label class="form-label">Theme</label>
+                <div class="form-input">
+                    <input type="text" name="theme" placeholder="e.g. Birthday, Wedding, etc.">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label class="form-label">Reference Photo</label>
+                <div class="form-input">
+                    <input type="file" name="reference_photo" accept="image/*">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label class="form-label">Approx. Budget</label>
+                <div class="form-input">
+                    <input type="text" name="budget" placeholder="$">
+                </div>
+            </div>
+            
+            <h2 class="section-title">Pickup/Delivery Preferences</h2>
+            
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="pickup" name="delivery_option" value="pickup" checked>
+                    <label for="pickup" class="radio-label">Pickup</label>
+                </div>
+                
+                <div class="radio-option">
+                    <input type="radio" id="delivery" name="delivery_option" value="delivery">
+                    <label for="delivery" class="radio-label">Delivery</label>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label class="form-label">Date</label>
+                <div class="form-input">
+                    <input type="date" name="date_needed" required>
+                </div>
+            </div>
+            
+            <div id="address-field" class="form-row hidden">
+                <label class="form-label">Address</label>
+                <div class="form-input">
+                    <input type="text" name="address" placeholder="Full delivery address">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <label class="form-label">Additional Notes</label>
+                <div class="form-input">
+                    <textarea name="additional_notes" placeholder="Any specific instructions or details about your cake order..."></textarea>
+                </div>
+            </div>
+            
+            <button type="submit" class="submit-button">Submit</button>
+        </form>
+    </div>
+
+    <!-- Modal Popup -->
+    <div id="thank-you-modal" class="modal">
+        <div class="modal-content">
+            <h3 class="modal-title">Thank You for Your Order!</h3>
+            <p class="modal-text">We're so excited to bake your perfect cake!</p>
+            <img src="bakeryimages/gcake3.gif" alt="Thank you" class="modal-gif" id="thank-you-gif">
+            <p class="modal-text">We'll contact you shortly to confirm all the details.</p>
+            <button class="close-button" id="close-modal">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="bakeryimages/bakerylogo.png" alt="Crave & Crumb Logo">
+                </div>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/yourpage" target="_blank">
+                        <img src="bakeryimages/instagram-alt-logo-24.png" alt="Instagram" class="social-icon">
+                    </a>
+                    <a href="https://www.youtube.com/yourchannel" target="_blank">
+                        <img src="bakeryimages/youtube-logo-24.png" alt="YouTube" class="social-icon">
+                    </a>
+                    <a href="https://www.tiktok.com/@youraccount" target="_blank">
+                        <img src="bakeryimages/tiktok-logo-24.png" alt="TikTok" class="social-icon">
+                    </a>
+                </div>
+                
+            </div>
+            
+            <div class="footer-column">
+                <div class="footer-links">
+                    <h3 class="footer-heading">Main Menu</h3>
+                    <a href="#" class="footer-link">Home</a>
+                    <a href="#" class="footer-link">Menu</a>
+                    <a href="#" class="footer-link">Custom Orders</a>
+                    <a href="#" class="footer-link">About Us</a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <div class="footer-links">
+                    <h3 class="footer-heading">Contact</h3>
+                    <a href="tel:+35569445123" class="footer-link">+355 69 445 1123</a>
+                    <a href="tel:+35568432133" class="footer-link">+355 68 432 1333</a>
+                    <a href="mailto:craveandcrumb@gmail.com" class="footer-link">craveandcrumb@gmail.com</a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <div class="footer-links">
+                    <h3 class="footer-heading">Opening Hours</h3>
+                    <p class="footer-link">Monday-Saturday: 8:00-20:00</p>
+                    <p class="footer-link">Sunday: Closed</p>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <div class="footer-links">
+                    <h3 class="footer-heading">Location</h3>
+                    <p class="footer-link">112 Rosewood Avenue, Blossom Hill, CA 90210</p>
+                </div>
+            </div>
+        </div>
+        
+       <!--<div class="footer-copyright">
+            © Crave & Crumb ♡ Desserts that whisper your name
+        </div>
+    -->
+    </footer>
+    <div class="footer-copyright">
+        © Crave & Crumb ♡ Desserts that whisper your name
+    </div>
+
+    <script src="scriptcustomorder.js"></script>
+</body>
+</html>
