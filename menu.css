@@ -363,69 +363,94 @@ i {
         gap: 30px;
     }
 }
-
-/* Phones */
-@media screen and (max-width: 768px) {
+/* Phoness */
+@media (max-width: 768px) {
     .navigation {
-        height: auto;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-between;
+        height: 100px;
     }
 
     .nav-items {
-        display: none;
-        flex-direction: column;
+        display: none; /* Hide nav items on small screens */
+        position: absolute;
+        top: 100px;
+        left: 0;
         width: 100%;
         background: #FFFFFF;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        padding: 10px 0;
-        z-index: 1000;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        flex-direction: column;
+        padding: 20px 0;
+        z-index: 100;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .nav-items.active {
-        display: flex;
-    }
-
-    .nav-item {
-        padding: 10px 20px;
-        text-align: center;
-        font-size: 20px;
-        width: 100%;
+        display: flex; /* Shown when hamburger is clicked */
     }
 
     .hamburger {
-        display: block;
-        z-index: 1100;
+        display: block; /* Show hamburger menu */
     }
-
+    /* Book container adjustments */
+    .book-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        padding: 0 10px;
+        margin: 20px auto;
+    }
+    
+    /* Make book responsive */
     .book {
-        width: 95%;
+        width: 100%;
+        max-width: 90vw;
         height: auto;
+        aspect-ratio: 3/4;
     }
-
+    
+    /* Adjust content areas for smaller screens */
+    .menu-page, .menu-back {
+        padding: 15px;
+        overflow-y: auto;
+    }
+    
+    /* Scale down buttons and icons */
     i {
-        font-size: 50px;
+        font-size: 30px;
     }
-
+    
+    /* Typography adjustments */
     .menu-logo {
         font-size: 4rem;
     }
-
+    
     .menu-text {
         font-size: 1.5rem;
     }
-
+    
     .menu-category {
         font-size: 2rem;
+        margin-bottom: 10px;
     }
-
+    
+    .menu-item {
+        margin-bottom: 12px;
+    }
+    
+    .menu-item-name,
+    .menu-item-price {
+        font-size: 0.9rem;
+    }
+    
+    .menu-item-desc {
+        font-size: 0.8rem;
+    }
+    
+    /* Fix z-index issues */
+    #p1 { z-index: 3; }
+    #p2 { z-index: 2; }
+    #p3 { z-index: 1; }
+    
     .footer-content {
-        flex-direction: column;
-        align-items: center;
         gap: 30px;
     }
 }
