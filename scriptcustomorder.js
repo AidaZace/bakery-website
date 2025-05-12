@@ -80,3 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Lottie library loaded");
             };
         });
+
+// Mobile menu toggle functionality
+const hamburger = document.getElementById('hamburger');
+const navItems = document.getElementById('nav-items');
+
+hamburger.addEventListener('click', () => {
+    navItems.classList.toggle('active');
+});
