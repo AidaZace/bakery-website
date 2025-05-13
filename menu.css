@@ -347,32 +347,18 @@ i {
 /* ========== FOOTER END ========== */
 
 /* ========== RESPONSIVE DESIGN ========== */
-
-/* Tablet & small laptop */
-@media screen and (max-width: 1200px) {
-    .book {
-        width: 90%;
-        height: auto;
-    }
-}
-
-/* Tablets and narrow screens */
-@media screen and (max-width: 992px) {
-    .book-container {
-        flex-direction: column;
-        gap: 30px;
-    }
-}
-/* Improved mobile fixes - add to the end of your CSS */
+    
+    /* Mobile styles for standard phone size */
 @media (max-width: 768px) {
+    /* Navigation adjustments */
     .navigation {
-        height: 100px;
+        height: 80px;
     }
 
     .nav-items {
         display: none; /* Hide nav items on small screens */
         position: absolute;
-        top: 100px;
+        top: 80px;
         left: 0;
         width: 100%;
         background: #FFFFFF;
@@ -390,47 +376,75 @@ i {
         display: block; /* Show hamburger menu */
     }
     
-    /* Book container setup for mobile */
+    /* Book container setup to center the book */
     .book-container {
         width: 100%;
-        height: 80vh;
+        height: calc(100vh - 180px);
         position: relative;
-        overflow: visible; /* Allow content to be visible when flipped */
-        margin: 20px auto;
-        padding: 0 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 2000px;
+        overflow: visible; /* Allow overflow to show flipped pages */
     }
     
-    /* Make the book proportionally sized for mobile */
+    /* Make the book properly sized - approximately half of desktop dimensions */
     .book {
-        width: 70%;
-        height: 100%;
-        max-height: 80vh;
-        position: relative;
-        margin: 0 auto;
-        transform: none !important; /* Override JS horizontal movement */
+        width: 175px; /* Half of desktop width (350px ÷ 2) */
+        height: 250px; /* Half of desktop height (500px ÷ 2) */
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) !important;
+        transform-style: preserve-3d;
     }
     
-    /* Modify paper and page flipping for mobile */
+    /* Modify paper and page flipping for side-by-side viewing */
     .paper {
+        position: absolute;
         width: 100%;
         height: 100%;
-        transform-origin: center; /* Change flip axis for mobile */
+        transform-origin: left center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
     }
     
-    /* Adjust the flip animation for mobile */
+    /* Front and back of pages */
     .front, .back {
+        position: absolute;
         width: 100%;
         height: 100%;
+        background-color: white;
         backface-visibility: hidden;
-        transform-origin: center; /* Center the flip for mobile */
+        overflow: hidden;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     
-    /* Adjust the positioning of navigation buttons */
+    /* Back face is rotated initially */
+    .back {
+        transform: rotateY(180deg);
+    }
+    
+    /* When flipped class is applied - move right exactly one book width */
+    .flipped {
+        transform: translateX(175px) rotateY(-180deg); /* Move right by book width and flip */
+    }
+    
+    /* Position navigation buttons below the book */
     #prev-btn, #next-btn {
         position: absolute;
-        bottom: -50px; /* Position below the book */
-        transform: none !important; /* Override JS translation */
+        bottom: 20px;
+        width: 50px;
+        height: 50px;
+        background-color: #722F37;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
         z-index: 100;
+        border: none;
     }
     
     #prev-btn {
@@ -441,24 +455,45 @@ i {
         right: 30%;
     }
     
-    /* Make sure flipped pages display correctly */
-    .flipped .front, .flipped .back {
-        transform: rotateY(-180deg); /* Keep just the rotation, no translation */
-    }
-    
-    /* Scale content appropriately */
+    /* Content styling - adjusted for smaller size */
     .front-content, .back-content {
-        padding: 15px;
+        padding: 10px;
         overflow-y: auto;
-        max-height: 100%;
+        height: 100%;
+        box-sizing: border-box;
     }
     
-    /* Ensure menu items fit on screen */
+    /* Menu item styling - scaled down for smaller book size */
     .menu-item {
-        margin-bottom: 10px;
+        margin-bottom: 8px;
+    }
+    
+    .menu-item-title {
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: #722F37;
+    }
+    
+    .menu-item-price {
+        font-size: 0.9rem;
+        color: #722F37;
+        font-weight: bold;
     }
     
     .menu-item-desc {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
+        color: #666;
+        font-style: italic;
+        margin-top: 2px;
+    }
+    
+    /* Section title styling */
+    .section-title {
+        font-size: 1.1rem;
+        color: #722F37;
+        text-align: center;
+        margin: 12px 0;
+        padding-bottom: 6px;
+        border-bottom: 1px solid #722F37;
     }
 }
