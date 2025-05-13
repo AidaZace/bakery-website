@@ -260,10 +260,12 @@ i {
 
 .menu-item-name {
     font-weight: bold;
+    font-size: 1rem;
 }
 
 .menu-item-price {
     color: #641c34;
+    font-size: 1rem;
 }
 
 .menu-item-desc {
@@ -375,40 +377,73 @@ i {
     .hamburger {
         display: block; /* Show hamburger menu */
     }
-    
-    /* Book container setup to center the book */
+    /* Container setup to properly center the book spine */
     .book-container {
         gap: 20px;
         margin: 20px auto;
         width: 100%;
+        display: flex;
         justify-content: center;
-        padding: 0 10px;
+        align-items: center;
+        padding: 0;
         box-sizing: border-box;
+        position: relative;
     }
 
-    /* Book size - scaled down proportionally from desktop */
+    /* Book size - using your exact specifications */
     .book {
-        width: 175px; /* Reduced from 350px but still visible when opened */
-        height: 250px; /* Reduced from 500px maintaining aspect ratio */
+        width: 175px;
+        height: 250px;
+        position: relative;
+        /* Center positioning the book so spine is in middle */
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    /* Enhanced perspective for better mobile 3D effect */
+    /* Enhanced perspective and position for papers */
     .paper {
         perspective: 2000px;
     }
 
-    /* Strengthened borders for visibility on smaller screens */
+    /* Important: Adjusted transform origin to create centered spine effect */
+    .front,
+    .back {
+        transform-origin: center left;
+        transition: transform 0.6s ease; /* Slightly smoothed animation */
+    }
+
+    /* Strengthened border for visibility */
     .front {
         border-left: 2px solid #641c34;
     }
 
-    /* Adjust button sizes for mobile */
+    /* Custom spine line in the center */
+    .book::after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 100%;
+        background-color: #641c34;
+        left: 0;
+        top: 0;
+        z-index: 10;
+    }
+
+    /* Navigation buttons positioning */
     button {
         margin: 5px;
+        position: relative;
+        z-index: 20;
     }
 
     i {
         font-size: 30px;
+    }
+
+    /* Adjusting the flipped state to maintain center alignment */
+    .flipped .front,
+    .flipped .back {
+        transform: rotateY(-180deg);
     }
 
     /* Cover design adjustments */
@@ -450,6 +485,14 @@ i {
 
     .menu-item {
         margin-bottom: 12px;
+    }
+
+    .menu-item-name {
+        font-size: 0.5rem;
+    }
+
+    .menu-item-price {
+        font-size: 0.5rem;
     }
 
     .menu-item-desc {
