@@ -94,3 +94,31 @@ function updateButtonState() {
 
 // Initialize button state on load
 updateButtonState();
+
+// Add this function to check if we're on mobile
+function isMobile() {
+    return window.innerWidth <= 768;
+}
+
+// Then modify your openBook and closeBook functions:
+function openBook() {
+    if (!isMobile()) {
+        book.style.transform = "translateX(50%)";
+        prevBtn.style.transform = "translateX(-300px)";
+        nextBtn.style.transform = "translateX(300px)";
+    }
+    // On mobile, we don't move the book horizontally
+}
+
+function closeBook(isAtBeginning) {
+    if (!isMobile()) {
+        if (isAtBeginning) {
+            book.style.transform = "translateX(0%)";
+        } else {
+            book.style.transform = "translateX(100%)";
+        }
+        prevBtn.style.transform = "translateX(0px)";
+        nextBtn.style.transform = "translateX(0px)";
+    }
+    // On mobile, we don't move the book horizontally
+}

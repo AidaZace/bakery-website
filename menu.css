@@ -363,94 +363,78 @@ i {
         gap: 30px;
     }
 }
-/* Phoness */
+/* Improved mobile fixes - add to the end of your CSS */
+/* Add or update these CSS rules */
 @media (max-width: 768px) {
-    .navigation {
-        height: 100px;
-    }
-
-    .nav-items {
-        display: none; /* Hide nav items on small screens */
-        position: absolute;
-        top: 100px;
-        left: 0;
-        width: 100%;
-        background: #FFFFFF;
-        flex-direction: column;
-        padding: 20px 0;
-        z-index: 100;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-items.active {
-        display: flex; /* Shown when hamburger is clicked */
-    }
-
-    .hamburger {
-        display: block; /* Show hamburger menu */
-    }
-    /* Book container adjustments */
+    /* Book container setup for mobile */
     .book-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
         width: 100%;
-        padding: 0 10px;
+        height: 80vh;
+        position: relative;
+        overflow: visible; /* Allow content to be visible when flipped */
         margin: 20px auto;
+        padding: 0 10px;
     }
     
-    /* Make book responsive */
+    /* Make the book proportionally sized for mobile */
     .book {
-        width: 100%;
-        max-width: 90vw;
-        height: auto;
-        aspect-ratio: 3/4;
+        width: 90%;
+        height: 100%;
+        max-height: 80vh;
+        position: relative;
+        margin: 0 auto;
+        transform: none !important; /* Override JS horizontal movement */
     }
     
-    /* Adjust content areas for smaller screens */
-    .menu-page, .menu-back {
+    /* Modify paper and page flipping for mobile */
+    .paper {
+        width: 100%;
+        height: 100%;
+        transform-origin: center; /* Change flip axis for mobile */
+    }
+    
+    /* Adjust the flip animation for mobile */
+    .front, .back {
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        transform-origin: center; /* Center the flip for mobile */
+    }
+    
+    /* Adjust the positioning of navigation buttons */
+    #prev-btn, #next-btn {
+        position: absolute;
+        bottom: -50px; /* Position below the book */
+        transform: none !important; /* Override JS translation */
+        z-index: 100;
+    }
+    
+    #prev-btn {
+        left: 30%;
+    }
+    
+    #next-btn {
+        right: 30%;
+    }
+    
+    /* Make sure flipped pages display correctly */
+    .flipped .front, .flipped .back {
+        transform: rotateY(-180deg); /* Keep just the rotation, no translation */
+    }
+    
+    /* Scale content appropriately */
+    .front-content, .back-content {
         padding: 15px;
         overflow-y: auto;
+        max-height: 100%;
     }
     
-    /* Scale down buttons and icons */
-    i {
-        font-size: 30px;
-    }
-    
-    /* Typography adjustments */
-    .menu-logo {
-        font-size: 4rem;
-    }
-    
-    .menu-text {
-        font-size: 1.5rem;
-    }
-    
-    .menu-category {
-        font-size: 2rem;
+    /* Ensure menu items fit on screen */
+    .menu-item {
         margin-bottom: 10px;
     }
     
-    .menu-item {
-        margin-bottom: 12px;
-    }
-    
-    .menu-item-name,
-    .menu-item-price {
-        font-size: 0.9rem;
-    }
-    
     .menu-item-desc {
-        font-size: 0.8rem;
-    }
-    
-    /* Fix z-index issues */
-    #p1 { z-index: 3; }
-    #p2 { z-index: 2; }
-    #p3 { z-index: 1; }
-    
-    .footer-content {
-        gap: 30px;
+        font-size: 0.75rem;
     }
 }
