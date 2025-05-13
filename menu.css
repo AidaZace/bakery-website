@@ -364,7 +364,6 @@ i {
     }
 }
 /* Improved mobile fixes - add to the end of your CSS */
-/* Add or update these CSS rules */
 @media (max-width: 768px) {
     .navigation {
         height: 100px;
