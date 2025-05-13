@@ -1,3 +1,11 @@
+// Mobile menu toggle functionality
+const hamburger = document.getElementById('hamburger');
+const navItems = document.getElementById('nav-items');
+
+hamburger.addEventListener('click', () => {
+    navItems.classList.toggle('active');
+});
+
 // References to DOM Elements
 const prevBtn = document.querySelector("#prev-btn");
 const nextBtn = document.querySelector("#next-btn");
