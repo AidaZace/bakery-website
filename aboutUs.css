@@ -10,8 +10,8 @@
             color: #000000;
         }
         
-        /* Navigation */
-        .navigation {
+/* ========== NAVIGATION START ========== */
+.navigation {
             width: 100%;
             height: auto;
             padding: 20px 0;
@@ -51,6 +51,9 @@
         .nav-items a:hover {
             color: #D32F7D;
         }
+
+
+/* ========== NAVIGATION END ========== */
         
         /* Main Content */
         .section {
