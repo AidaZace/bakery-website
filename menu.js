@@ -1,11 +1,18 @@
-// Mobile menu toggle functionality
-const hamburger = document.getElementById('hamburger');
-const navItems = document.getElementById('nav-items');
-
-hamburger.addEventListener('click', () => {
-    navItems.classList.toggle('active');
-});
-
+// Mobile menu functionality
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navItems = document.querySelector('.nav-items');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navItems.classList.toggle('active');
+        });
+        
+        // Close mobile menu when a link is clicked
+        const navLinks = document.querySelectorAll('.nav-items a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navItems.classList.remove('active');
+            });
+        });
 // References to DOM Elements
 const prevBtn = document.querySelector("#prev-btn");
 const nextBtn = document.querySelector("#next-btn");
