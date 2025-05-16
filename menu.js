@@ -24,22 +24,53 @@ const maxLocation = numOfPapers + 1;
 prevBtn.addEventListener("click", goPrevPage);
 nextBtn.addEventListener("click", goNextPage);
 
-// Book open/close logic
+// Add this function to check if we're on mobile
+function isMobile() {
+    return window.innerWidth <= 768;
+}
+
+// Book open/close logic with mobile spine centering
 function openBook() {
-    book.style.transform = "translateX(50%)";
-    prevBtn.style.transform = "translateX(-300px)";
-    nextBtn.style.transform = "translateX(300px)";
+    if (!isMobile()) {
+        // Desktop behavior - remains the same
+        book.style.transform = "translateX(50%)";
+        prevBtn.style.transform = "translateX(-300px)";
+        nextBtn.style.transform = "translateX(300px)";
+    } else {
+        // Mobile behavior - update class for center-spine positioning
+        updateBookPositionMobile();
+        // No need to move buttons on mobile as they're positioned below
+    }
 }
 
 function closeBook(isAtBeginning) {
-    if (isAtBeginning) {
-        book.style.transform = "translateX(0%)";
+    if (!isMobile()) {
+        // Desktop behavior - remains the same
+        if (isAtBeginning) {
+            book.style.transform = "translateX(0%)";
+        } else {
+            book.style.transform = "translateX(100%)";
+        }
+        prevBtn.style.transform = "translateX(0px)";
+        nextBtn.style.transform = "translateX(0px)";
     } else {
-        book.style.transform = "translateX(100%)";
+        // Mobile behavior - update class for center positioning
+        updateBookPositionMobile();
+        // No need to move buttons on mobile as they're positioned below
     }
+}
 
-    prevBtn.style.transform = "translateX(0px)";
-    nextBtn.style.transform = "translateX(0px)";
+// New function to handle mobile spine centering
+function updateBookPositionMobile() {
+    if (isMobile()) {
+        // If on first or last page, center the entire book
+        if (currentLocation === 1 || currentLocation === maxLocation) {
+            book.classList.remove('in-middle');
+        } else {
+            // Otherwise center the spine for middle pages
+            book.classList.add('in-middle');
+        }
+    }
 }
 
 // Go to next page
@@ -65,6 +96,7 @@ function goNextPage() {
         }
         currentLocation++;
         updateButtonState();
+        updateBookPositionMobile(); // Add this line
     }
 }
 
@@ -91,6 +123,7 @@ function goPrevPage() {
         }
         currentLocation--;
         updateButtonState();
+        updateBookPositionMobile(); // Add this line
     }
 }
 
@@ -100,33 +133,9 @@ function updateButtonState() {
     nextBtn.disabled = currentLocation === maxLocation;
 }
 
-// Initialize button state on load
+// Initialize button state and book position on load
 updateButtonState();
+updateBookPositionMobile(); // Add this line
 
-// Add this function to check if we're on mobile
-function isMobile() {
-    return window.innerWidth <= 768;
-}
-
-// Then modify your openBook and closeBook functions:
-function openBook() {
-    if (!isMobile()) {
-        book.style.transform = "translateX(50%)";
-        prevBtn.style.transform = "translateX(-300px)";
-        nextBtn.style.transform = "translateX(300px)";
-    }
-    // On mobile, we don't move the book horizontally
-}
-
-function closeBook(isAtBeginning) {
-    if (!isMobile()) {
-        if (isAtBeginning) {
-            book.style.transform = "translateX(0%)";
-        } else {
-            book.style.transform = "translateX(100%)";
-        }
-        prevBtn.style.transform = "translateX(0px)";
-        nextBtn.style.transform = "translateX(0px)";
-    }
-    // On mobile, we don't move the book horizontally
-}
+// Add window resize listener to update positioning if screen size changes
+window.addEventListener('resize', updateBookPositionMobile);

@@ -347,16 +347,14 @@ i {
     padding: 20px 0;
 }
 /* ========== FOOTER END ========== */
-
 /* ========== RESPONSIVE DESIGN ========== */
-    
-    /* Mobile styles for standard phone size */
+/* Mobile styles for standard phone size */
 @media (max-width: 768px) {
     /* Navigation adjustments */
     .navigation {
         height: 80px;
     }
-
+    
     .nav-items {
         display: none; /* Hide nav items on small screens */
         position: absolute;
@@ -369,15 +367,16 @@ i {
         z-index: 100;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     }
-
+    
     .nav-items.active {
         display: flex; /* Shown when hamburger is clicked */
     }
-
+    
     .hamburger {
         display: block; /* Show hamburger menu */
     }
-    /* Container setup to properly center the book spine */
+
+    /* Container setup to properly center the book */
     .book-container {
         gap: 20px;
         margin: 20px auto;
@@ -389,35 +388,24 @@ i {
         box-sizing: border-box;
         position: relative;
     }
-
+    
     /* Book size - using your exact specifications */
     .book {
         width: 175px;
         height: 250px;
         position: relative;
-        /* Center positioning the book so spine is in middle */
+        /* Center positioning by default (for first/last page view) */
         left: 50%;
         transform: translateX(-50%);
+        transition: transform 0.6s ease;
     }
-
-    /* Enhanced perspective and position for papers */
+    
+    /* Updated for better perspective */
     .paper {
         perspective: 2000px;
     }
-
-    /* Important: Adjusted transform origin to create centered spine effect */
-    .front,
-    .back {
-        transform-origin: center left;
-        transition: transform 0.6s ease; /* Slightly smoothed animation */
-    }
-
-    /* Strengthened border for visibility */
-    .front {
-        border-left: 2px solid #641c34;
-    }
-
-    /* Custom spine line in the center */
+    
+    /* Spine styling */
     .book::after {
         content: '';
         position: absolute;
@@ -428,77 +416,106 @@ i {
         top: 0;
         z-index: 10;
     }
-
-    /* Navigation buttons positioning */
+    
+    /* Base state for covers */
+    .front,
+    .back {
+        transform-origin: center left;
+        transition: transform 0.6s ease;
+    }
+    
+    /* Strengthened border for visibility */
+    .front {
+        border-left: 2px solid #641c34;
+    }
+    
+    /* Navigation buttons positioning for mobile - below the book */
+    .button-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+        z-index: 20;
+        position: relative;
+    }
+    
     button {
-        margin: 5px;
+        margin: 0 15px;
         position: relative;
         z-index: 20;
+        transform: none !important; /* Override any transform from desktop version */
     }
-
+    
     i {
         font-size: 30px;
     }
-
-    /* Adjusting the flipped state to maintain center alignment */
+    
+    /* Special case: When on any middle page (not first or last) */
+    .book.in-middle {
+        /* Reposition to allow for proper spine-centered flipping */
+        left: calc(50% - 87.5px); /* 50% - half book width */
+        transform: none;
+    }
+    
+    /* Regular flipped state */
     .flipped .front,
     .flipped .back {
         transform: rotateY(-180deg);
     }
-
+    
     /* Cover design adjustments */
     .menu-logo {
         font-size: 1.75rem;
         margin-bottom: 20px;
     }
-
+    
     .menu-text {
         letter-spacing: 2px;
         font-size: 0.5rem;
         margin: 15px 0;
     }
-
+    
     /* Menu content adjustments */
     .menu-page {
         padding: 20px;
     }
-
+    
     .menu-contact {
         padding: 25px 15px;
     }
-
+    
     .contact-item {
         font-size: 0.25rem;
         margin-bottom: 12px;
     }
-
+    
     .closing-note {
         margin-top: 30px;
         font-size: 0.5rem;
     }
-
+    
     /* Menu item styling adaptations */
     .menu-category {
         margin-bottom: 15px;
         font-size: 0.75rem;
     }
-
+    
     .menu-item {
         margin-bottom: 12px;
     }
-
+    
     .menu-item-name {
         font-size: 0.5rem;
     }
-
+    
     .menu-item-price {
         font-size: 0.5rem;
     }
-
+    
     .menu-item-desc {
         font-size: 0.4rem;
     }
-
+    
     .divider {
         margin: 12px auto;
     }
