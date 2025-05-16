@@ -387,6 +387,7 @@ i {
         padding: 0;
         box-sizing: border-box;
         position: relative;
+        flex-direction: column; /* Stack elements vertically on mobile */
     }
     
     /* Book size - using your exact specifications */
