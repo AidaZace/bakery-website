@@ -10,7 +10,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Navigation */
+/* ========== NAVIGATION START ========== */
 .navigation {
     width: 100%;
     height: 148px;
@@ -42,20 +42,22 @@ body {
 .nav-item {
     font-weight: 700;
     font-size: 24px;
-    line-height: 150%;
     color: #962058;
     text-decoration: none;
 }
 
-/* Mobile menu */
+.nav-item:hover {
+    color: #641c34;
+}
+
 .hamburger {
     display: none;
     cursor: pointer;
-    font-size: 24px;
+    font-size: 32px;
     color: #962058;
 }
 
-
+/* ========== NAVIGATION END ========== */
 
 /* Form Section */
 .form-container {
@@ -301,7 +303,8 @@ body {
             }
         }
 
-/* Footer */
+
+/* ========== FOOTER START ========== */
 .footer {
     width: 100%;
     background: #FFE5EC;
@@ -323,7 +326,6 @@ body {
 
 .footer-logo img {
     width: 100%;
-    height: 100%;
     object-fit: contain;
 }
 
@@ -347,7 +349,6 @@ body {
 .footer-heading {
     font-weight: 600;
     font-size: 16px;
-    line-height: 100%;
     color: #962058;
     margin-bottom: 10px;
 }
@@ -355,7 +356,6 @@ body {
 .footer-link {
     font-weight: 500;
     font-size: 16px;
-    line-height: 100%;
     color: #962058;
     text-decoration: none;
 }
@@ -364,15 +364,41 @@ body {
     font-family: 'Playfair Display', serif;
     font-weight: 500;
     font-size: 16px;
-    line-height: 150%;
     text-align: center;
     color: #D32F7D;
-    background-color: #ffffff; /* white background to match screenshot */
+    background-color: #ffffff;
     padding: 20px 0;
 }
+/* ========== FOOTER END ========== */
 
 /* Responsive */
 @media (max-width: 768px) {
+
+    .navigation {
+        height: 100px;
+    }
+
+    .nav-items {
+        display: none; /* Hide nav items on small screens */
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        background: #FFFFFF;
+        flex-direction: column;
+        padding: 20px 0;
+        z-index: 100;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-items.active {
+        display: flex; /* Shown when hamburger is clicked */
+    }
+
+    .hamburger {
+        display: block; /* Show hamburger menu */
+    }
+
     .form-group {
         flex-direction: column;
         align-items: flex-start;
@@ -394,6 +420,6 @@ body {
     }
     
     .footer-content {
-        flex-direction: column;
+        gap: 30px;
     }
 }

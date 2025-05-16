@@ -1,3 +1,11 @@
+// Mobile menu toggle functionality
+const hamburger = document.getElementById('hamburger');
+const navItems = document.getElementById('nav-items');
+
+hamburger.addEventListener('click', () => {
+    navItems.classList.toggle('active');
+});
+
 // References to DOM Elements
 const prevBtn = document.querySelector("#prev-btn");
 const nextBtn = document.querySelector("#next-btn");
@@ -16,22 +24,55 @@ const maxLocation = numOfPapers + 1;
 prevBtn.addEventListener("click", goPrevPage);
 nextBtn.addEventListener("click", goNextPage);
 
-// Book open/close logic
+// Add this function to check if we're on mobile
+function isMobile() {
+    return window.innerWidth <= 768;
+}
+
+// Book open/close logic with mobile spine centering
 function openBook() {
-    book.style.transform = "translateX(50%)";
-    prevBtn.style.transform = "translateX(-300px)";
-    nextBtn.style.transform = "translateX(300px)";
+    if (!isMobile()) {
+        // Desktop behavior - remains the same
+        book.style.transform = "translateX(50%)";
+        prevBtn.style.transform = "translateX(-300px)";
+        nextBtn.style.transform = "translateX(300px)";
+    } else {
+        // Mobile behavior - center the book with spine in middle
+        updateBookClassesMobile();
+    }
 }
 
 function closeBook(isAtBeginning) {
-    if (isAtBeginning) {
-        book.style.transform = "translateX(0%)";
+    if (!isMobile()) {
+        // Desktop behavior - remains the same
+        if (isAtBeginning) {
+            book.style.transform = "translateX(0%)";
+        } else {
+            book.style.transform = "translateX(100%)";
+        }
+        prevBtn.style.transform = "translateX(0px)";
+        nextBtn.style.transform = "translateX(0px)";
     } else {
-        book.style.transform = "translateX(100%)";
+        // Mobile behavior - update class for center positioning
+        updateBookClassesMobile();
     }
+}
 
-    prevBtn.style.transform = "translateX(0px)";
-    nextBtn.style.transform = "translateX(0px)";
+// Enhanced function to handle mobile positioning using classes
+function updateBookClassesMobile() {
+    if (isMobile()) {
+        // Clear all positioning classes first
+        book.classList.remove('first-page', 'last-page', 'in-middle');
+        
+        // Apply appropriate class based on current location
+        if (currentLocation === 1) {
+            book.classList.add('first-page');
+        } else if (currentLocation === maxLocation) {
+            book.classList.add('last-page');
+        } else {
+            book.classList.add('in-middle');
+        }
+    }
 }
 
 // Go to next page
@@ -57,6 +98,7 @@ function goNextPage() {
         }
         currentLocation++;
         updateButtonState();
+        updateBookClassesMobile(); // Updated function name
     }
 }
 
@@ -83,6 +125,7 @@ function goPrevPage() {
         }
         currentLocation--;
         updateButtonState();
+        updateBookClassesMobile(); // Updated function name
     }
 }
 
@@ -92,13 +135,9 @@ function updateButtonState() {
     nextBtn.disabled = currentLocation === maxLocation;
 }
 
-// Initialize button state on load
+// Initialize button state and book position on load
 updateButtonState();
+updateBookClassesMobile(); // Updated function name
 
-// Mobile menu toggle functionality
-const hamburger = document.getElementById('hamburger');
-const navItems = document.getElementById('nav-items');
-
-hamburger.addEventListener('click', () => {
-    navItems.classList.toggle('active');
-});
+// Add window resize listener to update positioning if screen size changes
+window.addEventListener('resize', updateBookClassesMobile);
