@@ -99,8 +99,9 @@
             margin-bottom: 20px;
         }
         
-/* Footer */
- .footer {
+
+/* ========== FOOTER START ========== */
+.footer {
     width: 100%;
     background: #FFE5EC;
     padding: 60px 5% 30px;
@@ -164,6 +165,7 @@
     background-color: #ffffff;
     padding: 20px 0;
 }
+/* ========== FOOTER END ========== */
         
         /* Mobile Menu */
         .mobile-menu-btn {

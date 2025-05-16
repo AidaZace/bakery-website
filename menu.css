@@ -402,21 +402,6 @@ i {
         transition: transform 0.5s;
         margin: 0 auto; /* Center horizontally */
     }
-    
-    /* Apply different positioning based on page state */
-    #book.first-page {
-        transform: translateX(0); /* Centered on first page */
-    }
-    
-    #book.last-page {
-        transform: translateX(0); /* Centered on last page */
-    }
-    
-    #book.in-middle {
-        /* Center the spine in the middle of the screen */
-        transform: translateX(0);
-    }
-    
     /* Paper styling */
     .paper {
         width: 175px;
