@@ -376,95 +376,95 @@ i {
         display: block; /* Show hamburger menu */
     }
 
-    /* Container setup to properly center the book */
+    /* Create a parent container for both book and buttons */
     .book-container {
-        gap: 20px;
-        margin: 20px auto;
         width: 100%;
         display: flex;
+        flex-direction: column; /* Stack elements vertically */
         justify-content: center;
         align-items: center;
+        margin: 20px auto;
         padding: 0;
         box-sizing: border-box;
-        position: relative;
-        flex-direction: column; /* Stack elements vertically on mobile */
     }
     
-    /* Book size - using your exact specifications */
-    .book {
-        width: 175px;
+    /* Book styling */
+    #book {
+        position: relative;
+        width: 350px; /* Total width for both pages (175px × 2) */
         height: 250px;
-        position: relative;
-        /* Center positioning by default (for first/last page view) */
-        left: 50%;
-        transform: translateX(-50%);
-        transition: transform 0.6s ease;
+        transition: transform 0.5s;
+        margin: 0 auto; /* Center horizontally */
     }
     
-    /* Updated for better perspective */
+    /* Apply different positioning based on page state */
+    #book.first-page {
+        transform: translateX(0); /* Centered on first page */
+    }
+    
+    #book.last-page {
+        transform: translateX(0); /* Centered on last page */
+    }
+    
+    #book.in-middle {
+        /* Center the spine in the middle of the screen */
+        transform: translateX(0);
+    }
+    
+    /* Paper styling */
     .paper {
+        width: 175px;
+        height: 100%;
+        position: absolute;
         perspective: 2000px;
     }
     
-    /* Spine styling */
-    .book::after {
-        content: '';
-        position: absolute;
-        width: 2px;
-        height: 100%;
-        background-color: #641c34;
-        left: 0;
-        top: 0;
-        z-index: 10;
+    /* Navigation buttons - positioned below the book */
+    .button-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        order: 2; /* Appears after the book */
     }
     
-    /* Base state for covers */
+    #prev-btn, 
+    #next-btn {
+        margin: 0 15px;
+        background: none;
+        border: none;
+        color: #641c34;
+        cursor: pointer;
+        z-index: 20;
+        transform: none !important; /* Override any desktop transforms */
+    }
+    
+    /* Clear all inline transforms that might be set by JS */
+    #prev-btn,
+    #next-btn,
+    #book {
+        transform: none !important; /* Using !important to override inline styles */
+    }
+    
+    /* Front and back page styling */
     .front,
     .back {
         transform-origin: center left;
         transition: transform 0.6s ease;
     }
     
-    /* Strengthened border for visibility */
     .front {
-        border-left: 2px solid #641c34;
+        border-left: 2px solid #641c34; /* Visible spine */
     }
     
-    /* Navigation buttons positioning for mobile - below the book */
-    .button-container {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-top: 20px;
-        z-index: 20;
-        position: relative;
-    }
-    
-    button {
-        margin: 0 15px;
-        position: relative;
-        z-index: 20;
-        transform: none !important; /* Override any transform from desktop version */
-    }
-    
-    i {
-        font-size: 30px;
-    }
-    
-    /* Special case: When on any middle page (not first or last) */
-    .book.in-middle {
-        /* Reposition to allow for proper spine-centered flipping */
-        left: calc(50% - 87.5px); /* 50% - half book width */
-        transform: none;
-    }
-    
-    /* Regular flipped state */
+    /* Flipped state */
     .flipped .front,
     .flipped .back {
         transform: rotateY(-180deg);
     }
     
-    /* Cover design adjustments */
+    /* Rest of your menu content styling */
     .menu-logo {
         font-size: 1.75rem;
         margin-bottom: 20px;
@@ -480,6 +480,7 @@ i {
     .menu-page {
         padding: 20px;
     }
+    
     
     .menu-contact {
         padding: 25px 15px;

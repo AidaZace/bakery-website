@@ -37,9 +37,8 @@ function openBook() {
         prevBtn.style.transform = "translateX(-300px)";
         nextBtn.style.transform = "translateX(300px)";
     } else {
-        // Mobile behavior - update class for center-spine positioning
-        updateBookPositionMobile();
-        // No need to move buttons on mobile as they're positioned below
+        // Mobile behavior - center the book with spine in middle
+        updateBookClassesMobile();
     }
 }
 
@@ -55,19 +54,22 @@ function closeBook(isAtBeginning) {
         nextBtn.style.transform = "translateX(0px)";
     } else {
         // Mobile behavior - update class for center positioning
-        updateBookPositionMobile();
-        // No need to move buttons on mobile as they're positioned below
+        updateBookClassesMobile();
     }
 }
 
-// New function to handle mobile spine centering
-function updateBookPositionMobile() {
+// Enhanced function to handle mobile positioning using classes
+function updateBookClassesMobile() {
     if (isMobile()) {
-        // If on first or last page, center the entire book
-        if (currentLocation === 1 || currentLocation === maxLocation) {
-            book.classList.remove('in-middle');
+        // Clear all positioning classes first
+        book.classList.remove('first-page', 'last-page', 'in-middle');
+        
+        // Apply appropriate class based on current location
+        if (currentLocation === 1) {
+            book.classList.add('first-page');
+        } else if (currentLocation === maxLocation) {
+            book.classList.add('last-page');
         } else {
-            // Otherwise center the spine for middle pages
             book.classList.add('in-middle');
         }
     }
@@ -96,7 +98,7 @@ function goNextPage() {
         }
         currentLocation++;
         updateButtonState();
-        updateBookPositionMobile(); // Add this line
+        updateBookClassesMobile(); // Updated function name
     }
 }
 
@@ -123,7 +125,7 @@ function goPrevPage() {
         }
         currentLocation--;
         updateButtonState();
-        updateBookPositionMobile(); // Add this line
+        updateBookClassesMobile(); // Updated function name
     }
 }
 
@@ -135,7 +137,7 @@ function updateButtonState() {
 
 // Initialize button state and book position on load
 updateButtonState();
-updateBookPositionMobile(); // Add this line
+updateBookClassesMobile(); // Updated function name
 
 // Add window resize listener to update positioning if screen size changes
-window.addEventListener('resize', updateBookPositionMobile);
+window.addEventListener('resize', updateBookClassesMobile);
