@@ -54,6 +54,17 @@ body {
 .nav-items a:hover {
     color: #D32F7D;
 }
+
+/* Mobile Menu */
+.mobile-menu-btn {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: #962058;
+    cursor: pointer;
+    margin-right: 5%;
+}
 /* ========== NAVIGATION END ========== */
 
 /* Main Content */
@@ -177,26 +188,50 @@ h1 {
 }
 /* ========== FOOTER END ========== */
 
-/* Mobile Menu */
-.mobile-menu-btn {
-    display: none;
-    font-size: 24px;
-    background: none;
-    border: none;
-    color: #962058;
-    cursor: pointer;
-    margin-right: 5%;
-}
+/* ========== RESPONSIVE DESIGN (MEDIA QUERIES) ========== */
 
-/* Responsive */
-@media (max-width: 768px) {
-    .navigation {
-        height: auto;
-        padding: 15px 0;
+/* Tablet & small laptop */
+@media screen and (max-width: 1200px) {
+    h1 {
+        font-size: 36px;
+        line-height: 48px;
     }
     
-    .logo img {
-        height: 50px;
+    .section-image img {
+        max-height: 450px;
+    }
+}
+
+/* Tablets and narrow screens */
+@media screen and (max-width: 992px) {
+    .section {
+        padding: 50px 5%;
+        gap: 30px;
+    }
+    
+    h1 {
+        font-size: 32px;
+        line-height: 42px;
+        margin-bottom: 25px;
+    }
+    
+    .section-text p {
+        font-size: 17px;
+    }
+    
+    .section-image img {
+        max-height: 400px;
+    }
+}
+
+/* Phones */
+@media screen and (max-width: 768px) {
+    .navigation {
+        height: 100px;
+    }
+
+    .mobile-menu-btn {
+        display: block;
     }
     
     .nav-items {
@@ -211,20 +246,18 @@ h1 {
         text-align: center;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         gap: 20px;
+        z-index: 99;
     }
     
     .nav-items.active {
         display: flex;
     }
     
-    .mobile-menu-btn {
-        display: block;
-    }
-    
     .section {
         flex-direction: column;
         text-align: center;
-        padding: 40px 4%;
+        padding: 40px 5%;
+        gap: 30px;
     }
     
     .section-reverse {
@@ -233,17 +266,20 @@ h1 {
     
     h1 {
         font-size: 28px;
-    }
-    
-    .section-text p {
-        font-size: 16px;
-        width: 100%;
+        line-height: 38px;
+        margin-bottom: 20px;
     }
     
     .section-text {
         width: 100%;
-        padding: 0 5px;
+        max-width: 100%;
         min-width: unset;
+        padding: 0 5px;
+    }
+    
+    .section-text p {
+        font-size: 16px;
+        line-height: 1.5;
     }
     
     .section-image {
@@ -254,9 +290,12 @@ h1 {
     
     .section-image img {
         max-width: 100%;
+        max-height: 300px;
         width: 100%;
+        object-fit: cover;
     }
     
+    /* Footer mobile styling */
     .footer-content {
         flex-direction: column;
         gap: 30px;
@@ -264,6 +303,19 @@ h1 {
     
     .footer-column {
         width: 100%;
-        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .footer-logo {
+        margin: 0 auto 15px;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+    
+    .footer-links {
+        align-items: center;
     }
 }
+/* ========== END RESPONSIVENESS ========== */
