@@ -1,4 +1,4 @@
- const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navItems = document.querySelector('.nav-items');
         
         mobileMenuBtn.addEventListener('click', () => {
