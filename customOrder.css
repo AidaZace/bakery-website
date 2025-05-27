@@ -63,18 +63,26 @@ body {
             cursor: pointer;
             margin-right: 5%;
         }
+
+        input{
+            width: 100%;
+        }
+
+
+       
+        
 /* Form Section */
 .form-container {
-            max-width: 800px;
-            width: 100%;
+            width: 800px;
             background-color: #ffe1e8;
             border-radius: 30px;
             padding: 40px;
-            position: relative;
             box-shadow: 0 10px 25px rgba(224, 60, 133, 0.1);
-            margin: 0 auto;
             display: flex;
             flex-direction: column;
+            margin-top: 25px !important;
+            margin-bottom: 25px !important;
+            margin: auto;
         }
         
         .form-title {
@@ -375,8 +383,20 @@ body {
 }
 /* ========== FOOTER END ========== */
 
+
+ @media only screen and (max-width: 874px) {
+ .form-container{ 
+    width: 90%;
+ }
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
+
+    .form-input{
+        width: 100%;
+    }
 
     .navigation {
         height: 100px;
