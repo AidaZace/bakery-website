@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crave & Crumb - Location Map</title>
+    <link rel="stylesheet" href="location.css" class="rel">
+</head>
+<body>
+    <div class="map-section">
+        <div class="map-container">
+            <h1 class="map-title">Find Us</h1>
+            <div class="decorative-line"></div>
+            <p class="map-subtitle">Visit Our Cozy Bakery</p>
+            
+            <!-- Map Wrapper -->
+            <div class="map-wrapper">
+                <!-- Replace this src with your actual location coordinates -->
+                <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d2996.419568264246!2d19.832248074856057!3d41.32148900008199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNDHCsDE5JzE3LjQiTiAxOcKwNTAnMDUuNCJF!5e0!3m2!1sen!2s!4v1748371605657!5m2!1sen!2s" 
+                width="600" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            
+            <!-- Location Details -->
+            <div class="location-details">
+                <div class="location-card">
+                    <h3>🏠 Address</h3>
+                    <p><span class="highlight">Crave & Crumb Bakery</span></p>
+                    <p>Near Udaikaranpur Market</p>
+                    <p>Udaikaranpur, Uttar Pradesh 221314</p>
+                    <p>India</p>
+                </div>
+                
+                <div class="location-card">
+                    <h3>🕐 Opening Hours</h3>
+                    <p><span class="highlight">Monday - Saturday:</span> 7:00 AM - 9:00 PM</p>
+                    <p><span class="highlight">Sunday:</span> 8:00 AM - 8:00 PM</p>
+                    <p>Closed on major holidays</p>
+                </div>
+                
+                <div class="location-card">
+                    <h3>📞 Contact</h3>
+                    <p><span class="highlight">Phone:</span> +91 98765 43210</p>
+                    <p><span class="highlight">Email:</span> hello@craveandcrumb.com</p>
+                    <p><span class="highlight">WhatsApp:</span> +91 98765 43210</p>
+                </div>
+            </div>
+            
+            <div class="back-to-menu">
+                <button onclick="goBackToMenu()">Back to Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function goBackToMenu() {
+            // This function will integrate with your existing menu navigation
+            // For now, it just shows an alert - you'll replace this with your navigation logic
+            alert('Returning to menu... (Replace this with your navigation logic)');
+            // Example: window.location.href = 'index.html';
+        }
+    </script>
+</body>
